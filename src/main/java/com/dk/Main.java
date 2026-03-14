@@ -1,17 +1,30 @@
 package com.dk;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import reactor.core.publisher.Flux;
+
+import java.util.Scanner;
+
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        StreamUtils.wordStream()
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+
+        Flux<Integer> fluxOfNumbers = Flux.just(1, 2, 3, 4, 5);
+        fluxOfNumbers.subscribe(System.out::println); // unlike stream, flux can be subscribed more than once
+        fluxOfNumbers.subscribe(System.out::println);
+
+        // Pushing the data (pub sub)
+        System.out.println(ReactiveStreamUtils.wordsStreamReactive()); // prints nothing
+        ReactiveStreamUtils.wordsStreamReactive() // pushing (publisher)
+                .subscribe(System.out::println); // the subscriber subscribes to the publisher(Flux)
+
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Press any key to exit the program");
+        sc.nextLine();
+
     }
 }
