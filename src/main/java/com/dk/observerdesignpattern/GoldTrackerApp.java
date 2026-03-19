@@ -1,22 +1,25 @@
 package com.dk.observerdesignpattern;
 
-public class Observer {
+public class GoldTrackerApp implements IObserver {
     private int price;
     private String name;
+    private Gold gold;
 
-    public Observer(String name) {
+    public GoldTrackerApp(String name, Gold gold) {
         this.name = name;
+        this.gold = gold;
+        this.gold.add(this);
     }
 
+    @Override
     public void update(int price){
         this.price = price;
         displayLatestPrice();
     }
 
-    public void displayLatestPrice(){
+    private void displayLatestPrice(){
         System.out.println("Latest Price from Observer "+this.getName()+ " is:"+ price);
     }
-
 
     public String getName() {
         return name;

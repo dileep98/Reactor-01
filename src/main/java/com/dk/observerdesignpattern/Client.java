@@ -3,22 +3,22 @@ package com.dk.observerdesignpattern;
 public class Client {
 
     public static void main(String[] args) {
-        Subject subject = new Subject();
+        Gold goldSubject = new Gold();
 
-        Observer observer = new Observer("Dileep");
-        Observer observer1 = new Observer("Kumar");
-        Observer observer2 = new Observer("Anil");
-        Observer observer3 = new Observer("Raju");
-        subject.add(observer);
-        subject.add(observer1);
-        subject.add(observer2);
-        subject.add(observer3);
+        GoldTrackerApp observer = new GoldTrackerApp("Dileep", goldSubject);
+        GoldTrackerApp observer1 = new GoldTrackerApp("Kumar", goldSubject);
+        GoldTrackerApp observer2 = new GoldTrackerApp("Anil", goldSubject);
+        GoldTrackerApp observer3 = new GoldTrackerApp("Raju", goldSubject);
+//        goldSubject.add(observer);
+//        goldSubject.add(observer1);
+//        goldSubject.add(observer2);
+//        goldSubject.add(observer3);
 //        subject.unregister(observer);
 
-        subject.setPrice(2000);
-        subject.setPrice(4000);
-        subject.unregister(observer);
-        subject.setPrice(1500);
+        goldSubject.setPrice(2000);
+        goldSubject.setPrice(4000);
+        goldSubject.remove(observer);
+        goldSubject.setPrice(1500);
     }
 
 }
