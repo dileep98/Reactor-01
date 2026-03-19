@@ -33,6 +33,10 @@ public class Subject {
         notifyAllObservers();
     }
 
+    public void unregister(Observer observer){
+        this.observers.remove(observer);
+    }
+
     private void notifyAllObservers(){
         for(Observer observer : observers){
             observer.update(price);
