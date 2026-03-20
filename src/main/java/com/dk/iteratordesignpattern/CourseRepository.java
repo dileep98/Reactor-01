@@ -7,13 +7,13 @@ public class CourseRepository implements Collection {
     private Course[] courses = new Course[10];
     private int index;
 
-    public void addCourse(Course course){
+    public void addCourse(Course course) {
         courses[index++] = course;
     }
 
     @Override
-    public Iterator createIterator(){
-        // Seperate class implementation we need to pass Course[] to the CourseIterator class
+    public Iterator createIterator() {
+        // Separate class implementation we need to pass Course[] to the CourseIterator class
         return new CourseIterator(courses);
 
         // If we want to implement iterator as an inner class
