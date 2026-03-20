@@ -2,7 +2,7 @@ package com.dk.iteratordesignpattern;
 
 import java.util.Objects;
 
-public class CourseRepository {
+public class CourseRepository implements Collection {
 
     private Course[] courses = new Course[10];
     private int index;
@@ -11,6 +11,7 @@ public class CourseRepository {
         courses[index++] = course;
     }
 
+    @Override
     public Iterator createIterator(){
         // Seperate class implementation we need to pass Course[] to the CourseIterator class
         return new CourseIterator(courses);
