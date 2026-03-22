@@ -31,6 +31,14 @@ public class ReactiveTest02 {
                 ex -> System.out.println("An Error Occurred"), // error function
                 () -> System.out.println("Completed")); // onComplete() consumer called when everything is completed
 
+        wordFlux(1).subscribe(word -> {
+            System.out.println(word);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
