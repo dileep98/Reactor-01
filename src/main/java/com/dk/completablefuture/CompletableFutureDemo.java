@@ -39,7 +39,7 @@ public class CompletableFutureDemo {
 
         System.out.println("Done...");
 
-        Thread.sleep(3000);
+        Thread.sleep(3000); // comment this and execute youll see the difference
 
 
         
